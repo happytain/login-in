@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>10AM</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+
+
+<body>
+
+	<div id="forForm">
+		<form id="add-to-board">
+			<label>Dearest Wen / Aayushi / Theia, <br>I woke up before 10am to do some work.</label><br>
+			<input type="text" name="board-item" id="board-item">
+			<button type="submit">&nbsp;&nbsp; ⮐ &nbsp;&nbsp;</button>
+	    </form>
+	</div>
+
+	<div id="board"></div>
+
+	<div id="datestamp"></div>
+
+
+	<script type="text/javascript">
+
+		var addToboard = document.querySelector('#add-to-board');
+		var boardItem = document.querySelector('#board-item');
+		var board = document.querySelector('#board');
+
+
+		var dateStamp = document.querySelector('#datestamp');
+
+		let today = new Date();
+		let lol = today.toDateString();
+		let hourz = today.getHours();
+		let minutez = today.getUTCMinutes();
+
+
+		window.addEventListener('load', function (event) {
+		  console.log('page is fully loaded');
+		  // Add today's date to the label
+		  dateStamp.innerHTML +=  lol + '.';
+		  console.log(today.getHours());
+		  console.log(today.getMinutes());
+
+		}, false);
+
+
+		addToboard.addEventListener('submit', function (event) {
+
+			// Don't submit the form
+			event.preventDefault();
+
+			// Ignore it if the board item is empty
+			if (boardItem.value.length < 1) return;
+
+			// Add item to board
+			board.innerHTML += '<div id="wrap">' + '<div id="note">' + '"' + boardItem.value + '"' + '<div id="dated">' + lol + ', ' + hourz + ':0' + minutez + '</div>' + '</div>' + '</div>';
+
+			// Clear input
+			boardItem.value = '';
+
+		}, false);
+
+
+// other constant declarations here
+const form = document.querySelector('form')
+const ul = document.querySelector('ul')
+const button = document.querySelector('button')
+const input = document.getElementById('item')
+
+let itemsArray = []
+
+localStorage.setItem('items', JSON.stringify(itemsArray))
+const data = JSON.parse(localStorage.getItem('items'))
+
+// form event listener here
+e.preventDefault()
+
+itemsArray.push(input.value)
+localStorage.setItem('items', JSON.stringify(itemsArray))
+
+</script>
+
+</body>
+</html>
