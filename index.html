@@ -2,19 +2,40 @@
 <html>
 <head>
 <title>10AM</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src='jquery.js' type='text/javascript'></script> 
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="icon" href="sun.ico" type="image/x-icon">
 </head>
 
 
 <body>
 
+	<div id="forForm2">
+		<button type="submit"><a>CLEAR</a></button>
+	</div>
+
 	<div id="forForm">
 		<form id="add-to-board">
 			<label>Dearest Wen / Aayushi / Theia, <br>I woke up before 10am to do some work.</label><br>
-			<input type="text" name="board-item" id="board-item">
-			<button type="submit">&nbsp;&nbsp; ⮐ &nbsp;&nbsp;</button>
+			<input type="text" value="" name="board-item" id="board-item">
+			<button type="submit"><a>⮐</a></button>
 	    </form>
 	</div>
+
+
+	<div id="test">
+	<form>
+  	<input id="item" type="text" placeholder="New" required />
+	</form>
+
+	<h2>Items</h2>
+	<ul></ul>
+
+	<button>Clear All</button>
+	</div>
+
+
 
 	<div id="board"></div>
 
@@ -31,9 +52,17 @@
 		var dateStamp = document.querySelector('#datestamp');
 
 		let today = new Date();
+		
+		Date.prototype.getFullMinutes = function () {
+   		if (this.getMinutes() < 10) {
+        return '0' + this.getMinutes();
+   		}
+   		return this.getMinutes();
+		};
+
 		let lol = today.toDateString();
 		let hourz = today.getHours();
-		let minutez = today.getUTCMinutes();
+		let minutez = today.getFullMinutes();
 
 
 		window.addEventListener('load', function (event) {
@@ -42,8 +71,11 @@
 		  dateStamp.innerHTML +=  lol + '.';
 		  console.log(today.getHours());
 		  console.log(today.getMinutes());
+		  console.log(today.getFullMinutes());
 
 		}, false);
+
+
 
 
 		addToboard.addEventListener('submit', function (event) {
@@ -55,7 +87,7 @@
 			if (boardItem.value.length < 1) return;
 
 			// Add item to board
-			board.innerHTML += '<div id="wrap">' + '<div id="note">' + '"' + boardItem.value + '"' + '<div id="dated">' + lol + ', ' + hourz + ':0' + minutez + '</div>' + '</div>' + '</div>';
+			board.innerHTML += '<div id="wrap">' + '<div id="note">' + '"' + boardItem.value + '"' + '<div id="dated">' + lol + ', ' + hourz + ':' + minutez + '</div>' + '</div>' + '</div>';
 
 			// Clear input
 			boardItem.value = '';

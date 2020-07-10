@@ -11,33 +11,61 @@ font-size: 24pt;
 font-family: Times, serif;
 }
 
+#forForm2{
+position: absolute;
+display: block;
+position: absolute;
+right:30px;
+top:10px;
+}
+
+#forForm2 button{
+height: 42.25px;
+width: 80px;
+text-align:center;
+margin-top: 20px;
+border: solid 1pt black;
+border-radius: 10px;
+outline: solid 2pt #eff7ed;
+outline-offset: 2pt;
+color: black;
+font-family: Arial, sans-serif;
+font-size: 11pt;
+padding-left: 1.75px;
+background-color: #eff7ed;
+}
+
+
 form{
 margin-top: 20px;
 margin-left: 20px;
 }
 
-input, button{
+#forForm input, #forForm button{
 margin-top: 20px;
-margin-left: 0px;
-margin-right:5px;
-height: 40px;
-width: auto;
 border: solid 1pt black;
 border-radius: 10px;
 outline: solid 2pt #eff7ed;
-outline-offset: 1pt;
+outline-offset: 2pt;
+margin-right:5px;
 color: black;
-font-size: 13pt;
-}
-
-input{
 font-family: Times, serif;
+font-size: 13pt;
 background-color: #eff7ed;
-padding-left:10px;
 }
 
-button{
-background-color: #eff7ed;
+#forForm input{
+height: 37px;
+padding-left:10px;
+width: 150px;
+text-align:left;
+}
+
+#forForm button{
+height: 42.25px;
+width: 80px;
+text-align:center;
+line-height: 1.5;
 }
 
 
