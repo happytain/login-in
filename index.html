@@ -24,7 +24,7 @@
 	</div>
 
 
-	<div id="test">
+<!-- 	<div id="test">
 	<form>
   	<input id="item" type="text" placeholder="New" required />
 	</form>
@@ -34,7 +34,7 @@
 
 	<button>Clear All</button>
 	</div>
-
+ -->
 
 
 	<div id="board"></div>
@@ -78,6 +78,8 @@
 
 
 
+
+
 		addToboard.addEventListener('submit', function (event) {
 
 			// Don't submit the form
@@ -86,8 +88,11 @@
 			// Ignore it if the board item is empty
 			if (boardItem.value.length < 1) return;
 
-			// Add item to board
-			board.innerHTML += '<div id="wrap">' + '<div id="note">' + '"' + boardItem.value + '"' + '<div id="dated">' + lol + ', ' + hourz + ':' + minutez + '</div>' + '</div>' + '</div>';
+
+			let message = '<div id="wrap">' + '<div id="note">' + '"' + boardItem.value + '"' + '<div id="dated">' + lol + ', ' + hourz + ':' + minutez + '</div>' + '</div>' + '</div>';
+			var existing = board.innerHTML;
+			document.getElementById("board").innerHTML = message + existing;
+			//this pre-appends new message to the one just sent!
 
 			// Clear input
 			boardItem.value = '';
